@@ -1,0 +1,10 @@
+<div class="uploads-view">
+    <!-- <input type="file" class="csv-input" (change)="onFileInput($event)" /> -->
+    <ngx-dropzone accept="text/csv" onRe class="dzone" (change)="onFileInput($event)">
+        <ngx-dropzone-label>Click or drag here to add CSV files</ngx-dropzone-label>
+        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-preview>
+    </ngx-dropzone>
+    <button class="upload-btn" mat-raised-button color="primary" (click)="uploadFile()">Upload</button>
+</div>

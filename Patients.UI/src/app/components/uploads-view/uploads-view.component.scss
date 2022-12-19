@@ -1,0 +1,18 @@
+.uploads-view {
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    
+    .upload-btn {
+        float: right;
+        margin-top: 15px;
+        min-width: 15%;
+    }
+
+    .dzone {
+        min-width: 50%;
+    }
+}
