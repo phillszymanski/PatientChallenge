@@ -1,26 +1,29 @@
-<h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
-<div mat-dialog-content>
-  <mat-form-field *ngIf="action != 'Delete'">
-    <mat-label>First Name</mat-label>
-    <input placeholder="{{action}} First Name" matInput [(ngModel)]="local_data.firstName">
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'">
-    <mat-label>Last Name</mat-label>
-    <input placeholder="{{action}} First Name" matInput [(ngModel)]="local_data.lastName">
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'">
-    <mat-label>First Name</mat-label>
-    <input placeholder="{{action}} Gender" matInput [(ngModel)]="local_data.gender">
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'">
-    <mat-label>Birhtday</mat-label>
-    <input placeholder="{{action}} Birthday" matInput [(ngModel)]="local_data.birthday">
-  </mat-form-field>
-  <ng-container *ngIf="action == 'Delete'">
-    <span>Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}</b>?</span>
-  </ng-container>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="doAction()">{{action}}</button>
-  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+
+<div class="dialog-content">
+  <h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
+  <div mat-dialog-content>
+    <mat-form-field class="dialog-field">
+      <mat-label>First Name</mat-label>
+      <input placeholder="{{action}} First Name" matInput [(ngModel)]="local_data.firstName">
+    </mat-form-field>
+    <mat-form-field class="dialog-field">
+      <mat-label>Last Name</mat-label>
+      <input placeholder="{{action}} First Name" matInput [(ngModel)]="local_data.lastName">
+    </mat-form-field>
+    <mat-form-field class="dialog-field">
+      <mat-label>First Name</mat-label>
+      <input placeholder="{{action}} Gender" matInput [(ngModel)]="local_data.gender">
+    </mat-form-field>
+    <mat-form-field class="dialog-field">
+      <mat-label>Birthday</mat-label>
+      <input placeholder="{{action}} Birthday" matInput [(ngModel)]="local_data.birthday">
+    </mat-form-field>
+    <ng-container *ngIf="action == 'Delete'">
+      <span>Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}</b>?</span>
+    </ng-container>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="doAction()">{{action}}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  </div>
 </div>

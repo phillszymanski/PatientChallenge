@@ -27,9 +27,22 @@ namespace Patients.API.Controllers
         }
 
         [HttpPost, DisableRequestSizeLimit]
-        public IActionResult UploadFiles()
+        public ActionResult<IEnumerable<Patient>> UploadFiles()
         {
-            _service.UploadPatients(Request.Form.Files);
+            var newPatients = _service.UploadPatients(Request.Form.Files);
+            return Ok(newPatients);
+        }
+
+        [HttpPatch]
+        public ActionResult<Patient> UpdatePatient(Patient patient)
+        {
+            var updatedPatient = _service.UpdatePatient(patient);
+            return Ok(updatedPatient);
+        }
+
+        [HttpDelete]
+        public ActionResult DeletePatient(int id)
+        {
             return Ok();
         }
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgxDropzoneChangeEvent } from 'ngx-dropzone';
 import { MatSnackBar, MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { PatientsService } from 'src/app/services/patients.service';
@@ -10,6 +10,7 @@ import { PatientsService } from 'src/app/services/patients.service';
 })
 export class UploadsViewComponent {
   files: File[] = [];
+  @Output() newPatientList = new EventEmitter<any>(); 
 
   constructor(private service: PatientsService, private _snackbar: MatSnackBar) { }
 
@@ -60,6 +61,7 @@ export class UploadsViewComponent {
     if(this.files.length) {
       this.service.uploadFiles(this.files).subscribe(data => {
         console.log("data: ", data);
+        this.newPatientList.emit(data);
       });
     } else {
       this._snackbar.open("Choose a file or files to upload", "OK", { 

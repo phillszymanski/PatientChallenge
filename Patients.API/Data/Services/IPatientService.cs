@@ -1,4 +1,5 @@
-﻿using Patients.API.Data.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Patients.API.Data.Models;
 
 namespace Patients.API.Data.Services
 {
@@ -6,8 +7,8 @@ namespace Patients.API.Data.Services
     {
         List<Patient> GetAllPatients();
         Patient GetPatientById(int id);
-        void UpdatePatient(int id, Patient patient);
+        Patient? UpdatePatient(Patient patient);
         void DeletePatient(int id);
-        void UploadPatients(IFormFileCollection files);
+        ActionResult<IEnumerable<Patient>> UploadPatients(IFormFileCollection files);
     }
 }

@@ -48,34 +48,19 @@ export class PatientsViewComponent implements AfterViewInit {
   openDialog(action:any,obj:any) {
     obj.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '250px',
+      width: '25%',
       data:obj
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result.event == 'Add'){
-        this.addRowData(result.data);
-      }else if(result.event == 'Update'){
+      if(result.event == 'Update'){
         this.updateRowData(result.data);
-      }else if(result.event == 'Delete'){
-        this.deleteRowData(result.data);
       }
     });
   }
 
-  addRowData(row_obj: IPatient){
-    var d = new Date();
-    this.dataSource.data.push({
-      id: row_obj.id,
-      firstName:row_obj.firstName,
-      lastName: row_obj.lastName,
-      birthday: row_obj.birthday
-    });
-    this.table.renderRows();
-    
-  }
-  updateRowData(row_obj: any){
-    this.dataSource.data = this.dataSource.data.filter((value,key)=>{
+  updateRowData(row_obj: IPatient){
+    var newData = this.dataSource.data.filter((value,key)=>{
       if(value.id == row_obj.id){
         value.firstName = row_obj.firstName;
         value.lastName = row_obj.lastName;
@@ -83,10 +68,16 @@ export class PatientsViewComponent implements AfterViewInit {
       }
       return true;
     });
+    console.log("newData: ", newData);
+    console.log("newData: ", newData);
+    this.service.updatePatient(row_obj).subscribe(data => {
+
+    })
   }
-  deleteRowData(row_obj: any){
-    this.dataSource.data = this.dataSource.data.filter((value,key)=>{
-      return value.id != row_obj.id;
-    });
+
+  updatePatientList(event: any) {
+    console.log(event);
+    this.dataSource.data = event.value;
+    this.table.renderRows();
   }
 }

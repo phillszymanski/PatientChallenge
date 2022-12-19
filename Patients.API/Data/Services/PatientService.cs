@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic.FileIO;
 using Patients.API.Data.Models;
 using System.Net.Mime;
 
@@ -28,12 +29,22 @@ namespace Patients.API.Data.Services
             throw new NotImplementedException();
         }
 
-        public void UpdatePatient(int id, Patient patient)
+        public Patient? UpdatePatient(Patient patient)
         {
-            throw new NotImplementedException();
+            var patientToUpdate = _context.Patients.Find(patient.Id);
+            if (patientToUpdate != null)
+            {
+                patientToUpdate.FirstName = patient.FirstName;
+                patientToUpdate.LastName = patient.LastName;
+                patientToUpdate.Birthday = patient.Birthday;
+                patientToUpdate.Gender = patient.Gender;
+
+                _context.SaveChanges();
+            }
+            return patientToUpdate;
         }
 
-        public void UploadPatients(IFormFileCollection files)
+        public ActionResult<IEnumerable<Patient>> UploadPatients(IFormFileCollection files)
         {
             List<Patient> patients = new List<Patient>();
 
@@ -78,6 +89,7 @@ namespace Patients.API.Data.Services
                         throw new ArgumentOutOfRangeException("ContentType", "File type not allowed: " + file.ContentType);
                 }
             }
+            return _context.Patients.ToList();
         }
     }
 }

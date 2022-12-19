@@ -3564,11 +3564,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repos\\Patients\\Patients.API\\Patients.API.csproj",
+      "projectUniqueName": "C:\\Repos\\testpat\\PatientChallenge\\Patients.API\\Patients.API.csproj",
       "projectName": "Patients.API",
-      "projectPath": "C:\\Repos\\Patients\\Patients.API\\Patients.API.csproj",
+      "projectPath": "C:\\Repos\\testpat\\PatientChallenge\\Patients.API\\Patients.API.csproj",
       "packagesPath": "C:\\Users\\Phillip\\.nuget\\packages\\",
-      "outputPath": "C:\\Repos\\Patients\\Patients.API\\obj\\",
+      "outputPath": "C:\\Repos\\testpat\\PatientChallenge\\Patients.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

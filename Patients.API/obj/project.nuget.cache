@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Rr9tHNm4geSHjfPrDgOBSwwoJWAgYbVlIPgcx2fduW/Ro734LI+DYr5KDg2J4yGB3u48P6MW4fLHOIKfW/w1FQ==",
+  "dgSpecHash": "RJlFTAKlHe5NIEHr6Fjxbmxf9Ei+HB1eZNHOXZ2shio0Vyspbn5asnVFrbasx2Aej8iYRRSE6GxP+UwVS81sXA==",
   "success": true,
-  "projectFilePath": "C:\\Repos\\Patients\\Patients.API\\Patients.API.csproj",
+  "projectFilePath": "C:\\Repos\\testpat\\PatientChallenge\\Patients.API\\Patients.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Phillip\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Phillip\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
