@@ -14,19 +14,9 @@ namespace Patients.API.Data.Services
             _context = context;
         }
 
-        public void DeletePatient(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Patient> GetAllPatients()
         {
             return _context.Patients.ToList();
-        }
-
-        public Patient GetPatientById(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public Patient? UpdatePatient(Patient patient)
