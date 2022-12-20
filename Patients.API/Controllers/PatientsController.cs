@@ -11,12 +11,11 @@ namespace Patients.API.Controllers
     public class PatientsController : ControllerBase
     {
         private IPatientService _service;
-        private readonly ILogger<PatientsController> _logger;
+        //private readonly ILogger<PatientsController> _logger;
 
-        public PatientsController(IPatientService service, ILogger<PatientsController> logger)
+        public PatientsController(IPatientService service)
         {
             _service = service;
-            _logger = logger;
         }
 
         [HttpGet]
@@ -38,12 +37,6 @@ namespace Patients.API.Controllers
         {
             var updatedPatient = _service.UpdatePatient(patient);
             return Ok(updatedPatient);
-        }
-
-        [HttpDelete]
-        public ActionResult DeletePatient(int id)
-        {
-            return Ok();
         }
     }
 }

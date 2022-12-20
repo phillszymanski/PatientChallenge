@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic.FileIO;
+using Patients.API.Controllers;
 using Patients.API.Data.Models;
 using System.Net.Mime;
 
@@ -8,10 +10,14 @@ namespace Patients.API.Data.Services
     public class PatientService : IPatientService
     {
         ChallengeContext _context;
+        private readonly ILogger<IPatientService> _logger;
 
-        public PatientService(ChallengeContext context)
+        public PatientService(ChallengeContext context, ILogger<IPatientService> logger)
         {
             _context = context;
+            _logger = logger;
+
+            _context.Database.EnsureCreated();
         }
 
         public List<Patient> GetAllPatients()
@@ -30,6 +36,9 @@ namespace Patients.API.Data.Services
                 patientToUpdate.Gender = patient.Gender;
 
                 _context.SaveChanges();
+            } else
+            {
+                _logger.Log(LogLevel.Error, "Patient not found.");
             }
             return patientToUpdate;
         }
@@ -76,6 +85,7 @@ namespace Patients.API.Data.Services
                         _context.SaveChanges();
                         break;
                     default:
+                        _logger.Log(LogLevel.Error, "Invalid file type: " + file.ContentType);
                         throw new ArgumentOutOfRangeException("ContentType", "File type not allowed: " + file.ContentType);
                 }
             }
