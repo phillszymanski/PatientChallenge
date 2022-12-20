@@ -14,7 +14,6 @@ export class DialogBoxComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: IPatient) {
-    console.log(data);
     this.local_data = {...data};
     this.action = this.local_data.action;
   }

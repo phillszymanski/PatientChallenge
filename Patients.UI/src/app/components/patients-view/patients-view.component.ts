@@ -15,6 +15,7 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 export class PatientsViewComponent implements AfterViewInit {
   displayedColumns: string[] = ['firstName', 'lastName', 'birthdate', 'gender', 'action'];
   dataSource: MatTableDataSource<IPatient>;
+  loading: boolean = true;
 
   @ViewChild(MatTable) table: MatTable<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,8 +27,8 @@ export class PatientsViewComponent implements AfterViewInit {
 
   ngOnInit() {
     this.service.getPatients().subscribe(data => {
-      console.log("data: ", data);
       this.dataSource.data = data as IPatient[];
+      this.loading = false;
     });
   }
 
@@ -68,15 +69,12 @@ export class PatientsViewComponent implements AfterViewInit {
       }
       return true;
     });
-    console.log("newData: ", newData);
-    console.log("newData: ", newData);
     this.service.updatePatient(row_obj).subscribe(data => {
 
     })
   }
 
   updatePatientList(event: any) {
-    console.log(event);
     this.dataSource.data = event.value;
     this.table.renderRows();
   }

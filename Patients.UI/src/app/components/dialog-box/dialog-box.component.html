@@ -22,7 +22,7 @@
       <span>Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}</b>?</span>
     </ng-container>
   </div>
-  <div mat-dialog-actions>
+  <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="doAction()">{{action}}</button>
     <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
   </div>

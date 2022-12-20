@@ -20,7 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     NgxDropzoneModule,
     HttpClientModule,
     FormsModule

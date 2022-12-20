@@ -15,14 +15,11 @@ export class UploadsViewComponent {
   constructor(private service: PatientsService, private _snackbar: MatSnackBar) { }
 
   onFileInput(event: NgxDropzoneChangeEvent) {
-    console.log("onFileInput: ", event);
 
     if(event.addedFiles.length) {
-      console.log("added files: ", event.addedFiles);
       this.files.push(...event.addedFiles);
     }
     if(event.rejectedFiles.length) {
-      console.log("rejected files: ", event.addedFiles);
 
       event.rejectedFiles.forEach( (rejectedFile, index) => {
         var reason = rejectedFile?.reason;
@@ -53,14 +50,12 @@ export class UploadsViewComponent {
   }
 
   onRemove(file: File) {
-    console.log("removed %s", file.name);
     this.files.splice(this.files.indexOf(file), 1);
   }
   
   uploadFile() {
     if(this.files.length) {
       this.service.uploadFiles(this.files).subscribe(data => {
-        console.log("data: ", data);
         this.newPatientList.emit(data);
       });
     } else {
