@@ -28,11 +28,16 @@ namespace Patients.API.Data.Services
         public Patient? UpdatePatient(Patient patient)
         {
             var patientToUpdate = _context.Patients.Find(patient.Id);
+            DateTime bday;
             if (patientToUpdate != null)
             {
                 patientToUpdate.FirstName = patient.FirstName;
                 patientToUpdate.LastName = patient.LastName;
-                patientToUpdate.Birthday = patient.Birthday;
+                //patientToUpdate.Birthday = patient.Birthday;
+                if(DateTime.TryParse(patient.Birthday.ToString(), out bday))
+                {
+                    patientToUpdate.Birthday = bday;
+                }
                 patientToUpdate.Gender = patient.Gender;
 
                 _context.SaveChanges();

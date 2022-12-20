@@ -50,7 +50,7 @@ export class PatientsViewComponent implements AfterViewInit {
     obj.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '25%',
-      data:obj
+      data: obj
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -70,7 +70,19 @@ export class PatientsViewComponent implements AfterViewInit {
       return true;
     });
     this.service.updatePatient(row_obj).subscribe(data => {
-
+      console.log("new data: ", data);
+      var d = data as IPatient;
+          console.log("brk1", d);
+      if(d) {
+        for(var i = 0; i < this.dataSource.data.length; i++) {
+          if(this.dataSource.data[i].id == d.id) {
+            this.dataSource.data[i] = d;
+            console.log("brk");
+            break;
+          }
+        }
+        this.table.renderRows();
+      }
     })
   }
 

@@ -11,19 +11,22 @@
       <input placeholder="{{action}} First Name" matInput [(ngModel)]="local_data.lastName">
     </mat-form-field>
     <mat-form-field class="dialog-field">
-      <mat-label>First Name</mat-label>
-      <input placeholder="{{action}} Gender" matInput [(ngModel)]="local_data.gender">
+      <mat-select [(value)]="local_data.gender">
+        <mat-option placeholder="Gender" *ngFor="let gender of genders" [value]="gender">
+          {{ gender }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Gender</mat-hint>
     </mat-form-field>
     <mat-form-field class="dialog-field">
       <mat-label>Birthday</mat-label>
-      <input placeholder="{{action}} Birthday" matInput [(ngModel)]="local_data.birthday">
+      <input matInput [matDatepicker]="picker" [value]="local_data.birthday" [(ngModel)]="local_data.birthday" #date="ngModel">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <ng-container *ngIf="action == 'Delete'">
-      <span>Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}</b>?</span>
-    </ng-container>
   </div>
   <div mat-dialog-actions class="dialog-actions">
-    <button mat-button (click)="doAction()">{{action}}</button>
+    <button [disabled]="date.invalid" mat-button (click)="doAction()" mat-flat-button color="primary">{{action}}</button>
     <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
   </div>
 </div>

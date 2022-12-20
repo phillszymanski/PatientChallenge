@@ -21,6 +21,10 @@ import { DialogBoxComponent } from './components/dialog-box/dialog-box.component
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +45,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSelectModule,
     NgxDropzoneModule,
     HttpClientModule,
     FormsModule
